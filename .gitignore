@@ -1,0 +1,21 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Local env files
+.env
+
+# Client-side libraries
+**/wwwroot/lib/bootstrap/
+**/wwwroot/lib/jquery/
