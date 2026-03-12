@@ -1,0 +1,28 @@
+@page "/login"
+@inject IJSRuntime JS
+@inject HttpClient Http
+
+<h1>Login</h1>
+<button @onclick="HandleLogin">Sign in with Google</button>
+<p>@_message</p>
+
+@code{
+private string _message = "";
+
+
+private async Task HandleLogin(){
+    var token = await JS.InvokeAsync<string>("firebaseSignIn");
+    Http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+    
+    var response = await Http.GetAsync("/api/auth/me");
+    _message = response.IsSuccessStatusCode ? "Logged in!" : $"Failed: {response.StatusCode}";
+
+}
+
+
+
+
+
+
+
+}
